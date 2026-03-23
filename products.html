@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+</head>
+<body>
+
+<h2>Our Products</h2>
+
+<div>
+  <p>Shirt - ₹799</p>
+  <button onclick="buyProduct('Shirt', 799)">Buy Now</button>
+</div>
+
+<div>
+  <p>Shoes - ₹1499</p>
+  <button onclick="buyProduct('Shoes', 1499)">Buy Now</button>
+</div>
+
+<div>
+  <p>Watch - ₹1999</p>
+  <button onclick="buyProduct('Watch', 1999)">Buy Now</button>
+</div>
+
+<br>
+<a href="index.html">Home</a>
+
+<script>
+function buyProduct(name, price) {
+
+  dataLayer.push({
+    event: "purchase",
+    ecommerce: {
+      transaction_id: "T" + Math.floor(Math.random()*10000),
+      value: price,
+      currency: "INR",
+      items: [{
+        item_name: name,
+        price: price,
+        quantity: 1
+      }]
+    }
+  });
+
+  window.location.href = "thankyou.html";
+}
+</script>
+
+</body>
+</html>
